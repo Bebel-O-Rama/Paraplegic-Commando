@@ -166,8 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a54dc3912ec54c43ac4603849b1fb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInZone: 0
-  IsOnRightSide: 0
+  isRHInZone: 0
+  isLHInZone: 0
+  Rayon: 1
+  Largeur: 0.1
+  Distance: 1
 --- !u!135 &17596858
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -198,6 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 29968962}
+  - component: {fileID: 29968963}
   m_Layer: 0
   m_Name: GestionnaireJeu
   m_TagString: Untagged
@@ -219,6 +223,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &29968963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29968961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe17d90d2dfe6f24c9c228fb0f215713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &89683815
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +483,7 @@ GameObject:
   - component: {fileID: 170427590}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -659,8 +675,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a54dc3912ec54c43ac4603849b1fb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInZone: 0
-  IsOnRightSide: 0
+  isRHInZone: 0
+  isLHInZone: 0
+  Rayon: 1
+  Largeur: 0.1
+  Distance: 1
 --- !u!65 &265324817
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -727,8 +746,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a54dc3912ec54c43ac4603849b1fb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInZone: 0
-  IsOnRightSide: 0
+  isRHInZone: 0
+  isLHInZone: 0
+  Rayon: 1
+  Largeur: 0.1
+  Distance: 1
 --- !u!65 &323784001
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -888,8 +910,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a54dc3912ec54c43ac4603849b1fb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInZone: 0
-  IsOnRightSide: 0
+  isRHInZone: 0
+  isLHInZone: 0
+  Rayon: 1
+  Largeur: 0.1
+  Distance: 1
 --- !u!135 &510016949
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1204,6 +1229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120796465}
   - component: {fileID: 1120796466}
+  - component: {fileID: 1120796467}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -1251,6 +1277,18 @@ MonoBehaviour:
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
+--- !u!114 &1120796467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120796464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd08e6102b23e654f9ef9a6ec57e5bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1334302235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1334302236}
   - component: {fileID: 1334302237}
+  - component: {fileID: 1334302238}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
@@ -1308,6 +1347,18 @@ MonoBehaviour:
   m_AnimateModel: 0
   m_ModelSelectTransition: 
   m_ModelDeSelectTransition: 
+--- !u!114 &1334302238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334302235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd08e6102b23e654f9ef9a6ec57e5bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1664860460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1542,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1687258585}
   - component: {fileID: 1687258584}
-  - component: {fileID: 1687258583}
   - component: {fileID: 1687258586}
   m_Layer: 0
   m_Name: Main Camera
@@ -1500,43 +1550,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1687258583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687258581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be76e5f14cfee674cb30b491fb72b09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boost: 3.5
-  positionLerpTime: 0.2
-  mouseSensitivityCurve:
-    m_Curve:
-    - time: 0
-      value: 0.5
-      inSlope: 0
-      outSlope: 5
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - time: 1
-      value: 2.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  rotationLerpTime: 0.01
-  invertY: 0
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -2930,6 +2943,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4519558671368823254}
+  - component: {fileID: 4519558671368823253}
   m_Layer: 0
   m_Name: Chair
   m_TagString: Untagged
@@ -2937,6 +2951,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4519558671368823253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4519558671368823252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a54dc3912ec54c43ac4603849b1fb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRHInZone: 0
+  isLHInZone: 0
+  Rayon: 1
+  Largeur: 0.1
+  Distance: 0.5
 --- !u!4 &4519558671368823254
 Transform:
   m_ObjectHideFlags: 0
