@@ -19,7 +19,7 @@ public class MvtChaise : MonoBehaviour, IUpdatable
     public void UpdateObj()
     {
         rbPlayer.AddForceAtPosition(player.transform.forward * GetDeltaMvtMainDroite(), player.transform.position + player.transform.right * DistRelRoueDroite);
-        rbPlayer.AddForceAtPosition(player.transform.forward * GetDeltaMvtMainGauche(), player.transform.position - player.transform.right * DistRelRoueDroite);
+        rbPlayer.AddForceAtPosition(player.transform.forward * GetDeltaMvtMainGauche(), player.transform.position - player.transform.right * DistRelRoueGauche);
     }
 
     private float GetDeltaMvtMainGauche()

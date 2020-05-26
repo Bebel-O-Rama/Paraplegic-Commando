@@ -170,7 +170,9 @@ MonoBehaviour:
   isLHInZone: 0
   Rayon: 1
   Largeur: 0.1
-  Distance: 1
+  LateralOffset: 0.25
+  ForwardOffset: 0.25
+  UpwardOffset: 0.25
 --- !u!135 &17596858
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -278,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89683815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.720085, y: -1.29, z: -17.223673}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2101483074}
@@ -497,7 +499,7 @@ Transform:
   m_GameObject: {fileID: 170427588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.515, y: 1.5325, z: 10.476}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 89683817}
   - {fileID: 4519558671368823254}
@@ -679,7 +681,9 @@ MonoBehaviour:
   isLHInZone: 0
   Rayon: 1
   Largeur: 0.1
-  Distance: 1
+  LateralOffset: 0.25
+  ForwardOffset: 0.25
+  UpwardOffset: 0.25
 --- !u!65 &265324817
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -750,7 +754,9 @@ MonoBehaviour:
   isLHInZone: 0
   Rayon: 1
   Largeur: 0.1
-  Distance: 1
+  LateralOffset: 0.25
+  ForwardOffset: 0.25
+  UpwardOffset: 0.25
 --- !u!65 &323784001
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -914,7 +920,9 @@ MonoBehaviour:
   isLHInZone: 0
   Rayon: 1
   Largeur: 0.1
-  Distance: 1
+  LateralOffset: 0.25
+  ForwardOffset: 0.25
+  UpwardOffset: 0.25
 --- !u!135 &510016949
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2965,9 +2973,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRHInZone: 0
   isLHInZone: 0
-  Rayon: 1
-  Largeur: 0.1
-  Distance: 0.5
+  Rayon: 0.35
+  Largeur: 0.15
+  LateralOffset: 0.25
+  ForwardOffset: -0.25
+  UpwardOffset: 0
 --- !u!4 &4519558671368823254
 Transform:
   m_ObjectHideFlags: 0
@@ -2976,7 +2986,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4519558671368823252}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 5.6961, y: -0.76461, z: -17.223673}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4519558670425831343}

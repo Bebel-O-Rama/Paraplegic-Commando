@@ -37,7 +37,6 @@ public class GestionnaireUpdate : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         foreach (IUpdatable item in UpdatablesScripts)
