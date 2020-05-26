@@ -37,15 +37,15 @@ public class WheelZone : MonoBehaviour, IUpdatable
         GestionnaireUpdate.Startup();
         WheelZone updatable = this;
         GestionnaireUpdate.GetInstance().AddObjToUpdateList(updatable);
-        Offset = Vector3.right * ForwardOffset + Vector3.up * UpwardOffset;
+        Offset = Vector3.forward * ForwardOffset + Vector3.up * UpwardOffset;
     }
 
     // Start is called before the first frame update
     void Start()
     {
 
-        RHand = GameObject.Find("RH");
-        LHand = GameObject.Find("LH");
+        RHand = GameObject.Find("RightHand");
+        LHand = GameObject.Find("LeftHand");
 
         debounceD = true;
         debounceG = true;
@@ -63,18 +63,19 @@ public class WheelZone : MonoBehaviour, IUpdatable
     private bool CheckIfHandInZone(GameObject Hand, float dist)
     {
 
-        Debug.DrawLine(Player.transform.position + Offset - dist * Player.transform.forward - Player.transform.up * Rayon,
-            Player.transform.position + Offset - dist * Player.transform.forward + Player.transform.up * Rayon, Color.cyan, 0.1f);
-        Debug.DrawLine(Player.transform.position + Offset - dist * Player.transform.forward - Player.transform.right * Rayon,
-            Player.transform.position + Offset - dist * Player.transform.forward + Player.transform.right * Rayon, Color.yellow, 0.1f);
-        Debug.DrawLine(Player.transform.position + Offset - dist * Player.transform.forward - Vector3.forward * (Largeur/2),
-            Player.transform.position + Offset - dist * Player.transform.forward + Vector3.forward * (Largeur/2), Color.magenta, 0.1f);
+        //Debug
+        Debug.DrawLine(Player.transform.position + Offset - dist * Player.transform.right - Player.transform.up * Rayon,
+            Player.transform.position + Offset - dist * Player.transform.right + Player.transform.up * Rayon, Color.cyan, 0.1f);
+        Debug.DrawLine(Player.transform.position + Offset - dist * Player.transform.right - Player.transform.forward * Rayon,
+            Player.transform.position + Offset - dist * Player.transform.right + Player.transform.forward * Rayon, Color.yellow, 0.1f);
+        Debug.DrawLine(Player.transform.position + Offset - dist * Player.transform.right - Vector3.right * (Largeur/2),
+            Player.transform.position + Offset - dist * Player.transform.right + Vector3.right * (Largeur/2), Color.magenta, 0.1f);
 
 
         //REVIEW : Might change Vector3 in 3rd line to Player.transform
-        return Hand.transform.localPosition.z - dist > -Largeur / 2 &&
-               Hand.transform.localPosition.z - dist <  Largeur / 2 &&
-               Vector3.Distance(Hand.transform.localPosition + Offset - dist * Vector3.forward, Player.transform.position + Offset - dist * Vector3.forward) <= Rayon;
+        return Hand.transform.localPosition.x - dist > -Largeur / 2 &&
+               Hand.transform.localPosition.x - dist <  Largeur / 2 &&
+               (Hand.transform.localPosition - Offset - dist * Vector3.right).magnitude <= Rayon;
 
 
     }
@@ -92,7 +93,7 @@ public class WheelZone : MonoBehaviour, IUpdatable
             Debug.Log("Main gauche a entré dans zone");
             debounceG = false;
         }
-        else if (!isLHInZone)
+        else if (!(isLHInZone && debounceG))
             debounceG = true;
 
 
@@ -101,7 +102,7 @@ public class WheelZone : MonoBehaviour, IUpdatable
             Debug.Log("Main droite a entré dans zone");
             debounceD = false;
         }
-        else if (!isRHInZone)
+        else if (!(isRHInZone && debounceD))
             debounceD = true;
     }
 }
