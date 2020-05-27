@@ -18,18 +18,12 @@ public class GestionnaireUpdate : MonoBehaviour
 
     //If this line shoots an error, that's because there's more than one GestionnaireUpdate
     private static GestionnaireUpdate instance;
+    private void Awake() => Startup();
+    public static void Startup() => instance = FindObjectOfType<GestionnaireUpdate>();
 
-    private void Awake()
-    {
-        //instance = FindObjectOfType<GestionnaireUpdate>();
-    }
+    public static GestionnaireUpdate GetInstance() => instance;
 
-    public static void Startup()
-    {
-        instance = FindObjectOfType<GestionnaireUpdate>();
-    }
 
-    // Start is called before the first frame update
     void Start()
     {
         //GetComponents<IUpdatable>(updatablesScripts);
@@ -40,24 +34,22 @@ public class GestionnaireUpdate : MonoBehaviour
     void Update()
     {
         foreach (IUpdatable item in UpdatablesScripts)
-        {
             item.UpdateObj();
-        }
     }
 
     /// <summary>
     /// Adds an updatable object to a List which updates in a specific order
     /// </summary>
-    /// <param name="updatable">The updatable object to be updated via its method UpdateObj(). The object needs to be added in the Awake() method</param>
+    /// <param name="updatable">The updatable object to be updated via its method UpdateObj(). The object needs to be added in the OnEnable() method</param>
     public void AddObjToUpdateList(IUpdatable updatable)
     {
-        if (UpdatablesScripts.Count != 0)
-        {
-            UpdatablesScripts.Insert(UpdatablesScripts.FindIndex(x => x.PriorityLevel >= updatable.PriorityLevel), updatable);
-            return;
-        }
+        //if (UpdatablesScripts.Count != 0)
+        //{
+        //    UpdatablesScripts.Insert(UpdatablesScripts.FindIndex(x => x.PriorityLevel >= updatable.PriorityLevel), updatable);
+        //    return;
+        //}
         UpdatablesScripts.Add(updatable);
-    }
 
-    public static GestionnaireUpdate GetInstance() => instance;
+        Debug.Log($"Added {updatable} to update list with priority {updatable.PriorityLevel}");
+    }
 }

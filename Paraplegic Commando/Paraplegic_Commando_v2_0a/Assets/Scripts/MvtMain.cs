@@ -7,30 +7,43 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class MvtMain : MonoBehaviour, IUpdatable
 {
+    bool isPressed;
+
     public int PriorityLevel => 3;
 
     float deltaMvt;
-    float pressLevel;
+    float pressLevel = 0;
 
-    const float SENSIBILITE = 0.25f;
+    const float SENSIBILITE = 5f;
 
     Vector3 prevPos;
-    InputDevice associatedController;
 
     private GameObject Player;
 
+    private void OnEnable()
+    {
+        MvtMain updatable = this;
+        GestionnaireUpdate.GetInstance().AddObjToUpdateList(updatable);
+    }
+
     public void UpdateObj()
     {
+        //Debug.Log(AssociatedController.name);
 
-        if (associatedController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out pressLevel))
-            Debug.Log("Trigger marche");
 
-        if (pressLevel > 0.9f)
-            pressLevel = 1f;
-        else if (pressLevel < 0.05f)
-            pressLevel = 0;
 
-        deltaMvt =  GetMvt() * pressLevel;
+        //if (pressLevel > 0.5f)
+        //    pressLevel = 1f;
+        //else //if (pressLevel < 0.05f)
+        //    pressLevel = 0;
+
+        deltaMvt =  GetMvt();
+
+
+
+
+        //if (pressLevel != 0)
+        //    Debug.Log("Press Level : " + pressLevel);
 
         prevPos = this.transform.localPosition;
     }
@@ -50,15 +63,11 @@ public class MvtMain : MonoBehaviour, IUpdatable
         return SENSIBILITE * deltaAngle * deltaPosNorm * torqueModifier / Time.deltaTime;
     }
 
-    public float GetDeltaMvt()
-    {
-        return deltaMvt;
-    }
+    public float GetDeltaMvt() => deltaMvt;
 
     // Start is called before the first frame update
     void Start()
     {
-        associatedController = this.GetComponent<XRController>().inputDevice;
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 }

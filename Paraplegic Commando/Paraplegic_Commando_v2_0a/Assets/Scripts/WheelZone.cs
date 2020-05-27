@@ -32,9 +32,9 @@ public class WheelZone : MonoBehaviour, IUpdatable
 
     public int PriorityLevel { get => 5;}
 
-    private void Awake()
+    private void OnEnable()
     {
-        GestionnaireUpdate.Startup();
+        //GestionnaireUpdate.Startup();
         WheelZone updatable = this;
         GestionnaireUpdate.GetInstance().AddObjToUpdateList(updatable);
         Offset = Vector3.forward * ForwardOffset + Vector3.up * UpwardOffset;
