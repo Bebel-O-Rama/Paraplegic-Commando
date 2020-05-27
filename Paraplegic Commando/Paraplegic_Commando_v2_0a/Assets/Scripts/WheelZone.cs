@@ -37,7 +37,7 @@ public class WheelZone : MonoBehaviour, IUpdatable
         //GestionnaireUpdate.Startup();
         WheelZone updatable = this;
         GestionnaireUpdate.GetInstance().AddObjToUpdateList(updatable);
-        Offset = Vector3.forward * ForwardOffset + Vector3.up * UpwardOffset;
+        Offset = Player.transform.forward * ForwardOffset + Player.transform.up * UpwardOffset;
     }
 
     // Start is called before the first frame update
